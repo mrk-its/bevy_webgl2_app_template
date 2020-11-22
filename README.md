@@ -10,7 +10,7 @@ cargo install cargo-make
 ```
 cargo make serve
 ```
-then point your browser to http://127.0.0.1/
+then point your browser to http://127.0.0.1:4000/
 
 
 # Build and run native version
