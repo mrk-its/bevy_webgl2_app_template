@@ -1,0 +1,37 @@
+[env]
+ENV_DIR = {source="${CARGO_MAKE_PROFILE}", default_value = "debug", mapping = {release = "release"}}
+CARGO_WASM_PATH = "${CARGO_TARGET_DIR}/wasm32-unknown-unknown/${ENV_DIR}/${CARGO_MAKE_CRATE_NAME}.wasm"
+CARGO_PROFILE = "dev"
+CARGO_TARGET_DIR = {source = "${CARGO_TARGET_DIR}", default_value = "target"}
+TARGET_DIR = "target"
+CARGO_MANIFEST_DIR = "${CARGO_MAKE_WORKING_DIRECTORY}"
+
+[env.release]
+CARGO_RELEASE_ARGS = "--release"
+
+[tasks.show-env]
+command = "env"
+
+[tasks.cargo-build-web]
+args = ["build", "--target", "wasm32-unknown-unknown", "--features", "web", "@@split(CARGO_RELEASE_ARGS, )"]
+command = "cargo"
+
+[tasks.build-web]
+args = ["--out-dir", "${TARGET_DIR}", "--out-name", "wasm", "--target", "web", "--no-typescript", "${CARGO_WASM_PATH}"]
+command = "wasm-bindgen"
+dependencies = ["cargo-build-web"]
+
+[tasks.build-native]
+args = ["build", "--features", "native", "@@split(CARGO_RELEASE_ARGS, )"]
+command = "cargo"
+
+[tasks.run]
+command = "${CARGO_TARGET_DIR}/${ENV_DIR}/${CARGO_MAKE_BINARY_EXECUTABLE_NAME}"
+dependencies = ["build-native"]
+
+[tasks.serve]
+command = "basic-http-server"
+dependencies = ["build-web"]
+
+[tasks.test]
+disabled = true

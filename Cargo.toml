@@ -1,0 +1,38 @@
+[package]
+name = "bevy_webgl2_app"
+version = "0.1.0"
+authors = []
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = [
+  "bevy/bevy_gltf",
+  "bevy/bevy_winit",
+  "bevy/render",
+  "bevy/png",
+]
+
+native = [
+  "bevy/bevy_wgpu",
+]
+
+web = [
+  "bevy_webgl2"
+]
+
+[dependencies]
+bevy = {git = "https://github.com/bevyengine/bevy", default-features=false}
+bevy_webgl2 = {git = "https://github.com/mrk-its/bevy_webgl2", optional=true}
+winit = {version = "0.23.0", features = ["web-sys", "x11"], default-features = false}
+
+[patch.'https://github.com/bevyengine/bevy']
+bevy = {git = "https://github.com/bevyengine/bevy//", branch="master", default-features=false}
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+lto = true
+opt-level = 's'
