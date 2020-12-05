@@ -1,9 +1,9 @@
 [package]
-name = "bevy_webgl2_app"
+name = "bevy_app"
 version = "0.1.0"
 authors = []
 edition = "2018"
-
+repository = "https://github.com/mrk-its/bevy_webgl2_app_template"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
@@ -28,11 +28,14 @@ bevy_webgl2 = {git = "https://github.com/mrk-its/bevy_webgl2", optional=true}
 winit = {version = "0.23.0", features = ["web-sys", "x11"], default-features = false}
 
 [patch.'https://github.com/bevyengine/bevy']
-bevy = {git = "https://github.com/bevyengine/bevy//", branch="master", default-features=false}
+bevy = {git = "https://github.com/bevyengine/bevy//", rev="704a11677881e762415b15e384c1b7a05fee7c1e", default-features=false}
+
+[patch.'https://github.com/mrk-its/bevy_webgl2']
+bevy_webgl2 = {git = "https://github.com/mrk-its/bevy_webgl2//", rev="8421bfaccd70ca344317fc4807c4b0efd6a74763", default-features=false}
 
 [profile.dev]
 opt-level = 1
 
 [profile.release]
-lto = true
-opt-level = 's'
+# lto = true
+# opt-level = 's'
