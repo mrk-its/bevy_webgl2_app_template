@@ -6,7 +6,7 @@ fn main() {
         .add_plugins(DefaultPlugins);
     #[cfg(target_arch = "wasm32")]
     app.add_plugin(bevy_webgl2::WebGL2Plugin);
-    app.add_startup_system(setup).run();
+    app.add_startup_system(setup.system()).run();
 }
 
 /// set up a simple 3D scene
