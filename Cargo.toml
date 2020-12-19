@@ -23,15 +23,15 @@ web = [
 ]
 
 [dependencies]
-bevy = {git = "https://github.com/bevyengine/bevy", default-features=false}
-bevy_webgl2 = {git = "https://github.com/mrk-its/bevy_webgl2", optional=true}
+bevy = {version="0.4.0", default-features=false}
+bevy_webgl2 = {version="0.4.0", optional=true}
 winit = {version = "0.24.0"}
 
-[patch.'https://github.com/bevyengine/bevy']
-bevy = {git = "https://github.com/bevyengine/bevy//", rev="841755aaf23acfd55b375c37390daeb302c5b30b", default-features=false}
+# [patch.'https://github.com/bevyengine/bevy']
+# bevy = {git = "https://github.com/bevyengine/bevy//", rev="841755aaf23acfd55b375c37390daeb302c5b30b", default-features=false}
 
-[patch.'https://github.com/mrk-its/bevy_webgl2']
-bevy_webgl2 = {git = "https://github.com/mrk-its/bevy_webgl2//", rev="035236b8d7ec52b8e9e20399662e89c73e4521f6", default-features=false}
+# [patch.'https://github.com/mrk-its/bevy_webgl2']
+# bevy_webgl2 = {git = "https://github.com/mrk-its/bevy_webgl2//", rev="035236b8d7ec52b8e9e20399662e89c73e4521f6", default-features=false}
 
 [profile.dev]
 opt-level = 1
