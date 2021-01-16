@@ -26,7 +26,7 @@ web = [
 bevy = {version="0.4.0", default-features=false}
 bevy_webgl2 = {version="0.4.0", optional=true}
 winit = {version = "0.24.0"}
-
+uuid = {version="=0.8.1"}
 # [patch.'https://github.com/bevyengine/bevy']
 # bevy = {git = "https://github.com/bevyengine/bevy//", rev="841755aaf23acfd55b375c37390daeb302c5b30b", default-features=false}
 
