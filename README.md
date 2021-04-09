@@ -5,6 +5,9 @@
 ```
 cargo install cargo-make
 ```
+```
+rustup target add wasm32-unknown-unknown
+```
 
 ## Build and serve WASM version
 ```
