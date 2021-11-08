@@ -4,31 +4,21 @@ version = "0.1.0"
 authors = []
 edition = "2018"
 repository = "https://github.com/mrk-its/bevy_webgl2_app_template"
+resolver = "2"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[features]
-default = [
-  "bevy/bevy_gltf",
-  "bevy/bevy_winit",
-  "bevy/render",
-  "bevy/png",
-]
-
-native = [
-  "bevy/bevy_wgpu",
-]
-
-web = [
-  "bevy_webgl2"
-]
-
 [dependencies]
-bevy = {version="0.5.0", default-features=false}
-bevy_webgl2 = {version="0.5.0", optional=true}
+rand = "0.8"
 
-winit = {version = "0.24.0"}
-rand = "0.7"
-getrandom = {version="0.1", features=["wasm-bindgen"]}
+# Dependencies for native only.
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+bevy = { version = "0.5", default-features = false, features = ["bevy_gltf", "bevy_winit", "render", "png", "bevy_wgpu"] }
+
+# Dependencies for WASM only.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+bevy = { version = "0.5", default-features = false, features = ["bevy_gltf", "bevy_winit", "render", "png"] }
+bevy_webgl2 = "0.5"
+getrandom = { version="0.2", features=["wasm-bindgen"] }
 
 # [patch.'https://github.com/bevyengine/bevy']
 # bevy = {git = "https://github.com/bevyengine/bevy//", rev="841755aaf23acfd55b375c37390daeb302c5b30b", default-features=false}
