@@ -13,7 +13,8 @@ rand = "0.8"
 # Dependencies for native only.
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 bevy = { version = "0.5", default-features = false, features = ["bevy_gltf", "bevy_winit", "render", "png", "bevy_wgpu"] }
-
+[target.'cfg(target_os = "linux")'.dependencies]
+winit = { version = "0.24", features=["x11"]}
 # Dependencies for WASM only.
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 bevy = { version = "0.5", default-features = false, features = ["bevy_gltf", "bevy_winit", "render", "png"] }
