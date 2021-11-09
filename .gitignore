@@ -5,3 +5,4 @@ crates/*/target
 /.idea
 /.vscode
 /benches/target
+bin
