@@ -199,6 +199,7 @@ dependencies = [
  "bevy_webgl2",
  "getrandom",
  "rand",
+ "tracing-wasm",
  "winit",
 ]
 
